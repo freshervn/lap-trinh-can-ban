@@ -14,7 +14,14 @@ void run(n)
     break;
     case 5:CacSoNguyenToNhoHonN();
     break;
-    case 6:KiemTraSoHoanHao();
+    case 6: KiemTraSoHoanHao();
+    break;
+    case 7: NgayKeTiep();
+    break;
+    case 8: UCLN();
+    break;
+    case 9: VeTamGiac();
+    break;
     }
 }
 int main()
@@ -65,7 +72,7 @@ void SoNgayTrongThang(){
            {
                t[1]=29;
            }
-        printf("so ngay cua thang la:%d\n",t[m]);
+        printf("so ngay cua thang la:%d\n",t[m-1]);
     }
 }
 void CanhCuaTamGiac(){
@@ -171,4 +178,75 @@ void KiemTraSoHoanHao(){
     }
     else s=s+1;
     if (s==n){printf("%d la so hoan hao\n",n);}
+}
+void NgayKeTiep(){
+    printf("bai 7: nhap ngay thang nam ,in ra ngay thang ke tiep\n dd/mm/yy=");
+    int d,m,y;
+    scanf("%d%d%d",&d,&m,&y);
+    int t[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+    if(y%400==0||(y%4==0&&y%100!=0)){
+        t[1]=29;
+    }
+    if(y<0)
+    {
+        printf("nam khong hop le.\n");
+    } else
+    if (m<1||m>12) {
+        printf("thang khong hop le\n");
+    }
+    else
+    if(d<1||d>t[m]){
+        printf("ngay khong hop le\n");}
+    else
+    {
+        if(d==t[m]){
+            d=1;
+            if(m=12){
+                m=1;
+                y++;
+            }
+            else m++;
+            printf("%d/%d/%d",d,m,y);
+        }
+        else
+            printf("%d/%d/%d",++d,m,y);
+    }
+}
+void UCLN(){
+    printf("bai 8;tim ucln giua 2 so \n x,y=");
+    int x,y,t;
+    scanf("%d%d",&x,&y);
+    while (x%y!=0||y%x!=0)
+    {
+        int t=x;
+        x=abs(y-x);
+        y=t;
+    }
+    printf("%d\n",x<y?x:y);
+}
+void VeTamGiac(){
+    printf("bai 9: ve tam giac\nChieu cao h=");
+    int h;
+    scanf("%d",&h);
+    printf("\n");
+    for (int i=0;i<h;i++){
+        for(int j=0;j<h*2-1;j++){
+            if(j>=h-1-i&&j<=h-1+i){
+                printf("*");
+            } else printf(" ");
+        }
+        printf("\n");
+    }
+    printf("\n");
+    for (int i=0;i<h-1;i++){
+        for(int j=0;j<h*2-1;j++){
+            if(j==h-1-i||j==h-1+i){
+                printf("*");
+            } else printf(" ");
+        }
+        printf("\n");
+    }
+    for (int i=0;i<h*2-1;i++){
+                printf("*");
+    }
 }
